@@ -1,0 +1,23 @@
+image: jelaniwoods/appdev2022-industrial_auth-wip
+
+tasks:
+  - before: |
+      if [ ! -d ./vendor/bundle/ruby ]; then
+        cp -r /base-rails/gems/ruby vendor/bundle
+        bundle config set --local path 'vendor/bundle'
+        rails db:create db:migrate
+        rails db:seed
+      fi
+ports:
+  - port: 3000
+    onOpen: open-preview
+  - port: 5432
+    onOpen: ignore
+  - port: 9500-9999
+    onOpen: ignore
+
+vscode:
+  extensions:
+    - vortizhe.simple-ruby-erb
+    - mbessey.vscode-rufo
+    - aliariff.vscode-erb-beautify
