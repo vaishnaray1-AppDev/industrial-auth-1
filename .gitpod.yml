@@ -2,9 +2,12 @@ image: jelaniwoods/appdev2022-industrial_auth-wip
 
 tasks:
   - before: |
-      cp -r /base-rails/gems/ruby vendor/bundle
-      bundle config set --local path 'vendor/bundle'
-      bin/setup
+      if [ ! -d ./vendor/bundle/ruby ]; then
+        cp -r /base-rails/gems/ruby vendor/bundle
+        bundle config set --local path 'vendor/bundle'
+        rails db:create db:migrate
+        rails db:seed
+      fi
 ports:
   - port: 3000
     onOpen: open-preview
