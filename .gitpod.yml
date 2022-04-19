@@ -1,4 +1,4 @@
-image: jelaniwoods/appdev2022-industrial_auth
+image: jelaniwoods/appdev2022-industrial_auth-wip
 
 tasks:
   - before: |

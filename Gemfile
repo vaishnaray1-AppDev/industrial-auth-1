@@ -81,5 +81,5 @@ group :development do
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
   gem 'skylight'
-  gem 'web_git', github: 'firstdraft/web_git'
+  gem 'web_git'
 end
