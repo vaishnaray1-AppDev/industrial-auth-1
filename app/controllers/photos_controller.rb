@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: %i[ show edit update destroy ]
+  before_action :ensure_owner_is_current_user, only: %i[ edit update destroy ]
 
   # GET /photos or /photos.json
   def index
@@ -50,11 +51,13 @@ class PhotosController < ApplicationController
 
   # DELETE /photos/1 or /photos/1.json
   def destroy
+  
     @photo.destroy
     respond_to do |format|
       format.html { redirect_back fallback_location: root_url, notice: "Photo was successfully destroyed." }
       format.json { head :no_content }
     end
+   
   end
 
   private
@@ -62,6 +65,12 @@ class PhotosController < ApplicationController
     def set_photo
       @photo = Photo.find(params[:id])
     end
+
+    def ensure_owner_is_current_user
+      if @photo.owner != current_user
+        redirect_back fallback_location: root_path, alert: "Nice try loser!"
+     end
+    end 
 
     # Only allow a list of trusted parameters through.
     def photo_params
