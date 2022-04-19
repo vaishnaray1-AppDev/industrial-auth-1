@@ -3,8 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.3'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-
 gem 'draft_generators', github: 'firstdraft/draft_generators', branch: 'winter-2020'
 gem 'active_link_to'
 gem "strip_attributes"
@@ -13,6 +11,7 @@ gem 'devise'
 gem 'faker'
 gem 'pundit'
 
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
@@ -81,5 +80,5 @@ group :development do
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
   gem 'skylight'
-  gem 'web_git'
+  gem 'web_git', github: 'firstdraft/web_git'
 end
